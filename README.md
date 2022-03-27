@@ -14,7 +14,7 @@ Current tools implemented:
 
 Note that these buttons only work on normal web pages, not special pages like `about:debugging`.
 
-Compatible with Firefox, Chrome, Edge, and Opera browsers.
+Compatible with Firefox, Chrome, Edge, and Opera browsers. Tested on Firefox.
 
 ## Contribution
 
