@@ -1,0 +1,38 @@
+{
+
+  "extensionName": {
+    "message": "HacKontext",
+    "description": "Name of the extension."
+  },
+
+  "extensionDescription": {
+    "message": "Copy the parameters for your desired infosec tool.",
+    "description": "Description of the add-on."
+  },
+  
+  "menuItemToolsCopy": {
+    "message": "HacKontext",
+    "description": "Title of tools copy item."
+  },
+
+  "menuItemToolsCopyAsFFUF": {
+    "message": "Copy as FFUF",
+    "description": "Title of FFUF copy item."
+  },
+
+  "menuItemToolsCopyAsSQLMAP": {
+    "message": "Copy as SQLMap",
+    "description": "Title of SQLMap copy item."
+  },
+
+  "menuItemToolsCopyAsTIMEVERTER": {
+    "message": "Copy as TimeVerter",
+    "description": "Title of TimeVerter copy item."
+  },
+
+  "menuItemToolsCopyAsWFUZZ": {
+    "message": "Copy as WFUZZ",
+    "description": "Title of WFUZZ copy item."
+  }
+
+}
