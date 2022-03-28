@@ -1,4 +1,4 @@
-# HacKontext
+# HacKontext - Kontext your Hack Menu! 
 
 ![image](https://user-images.githubusercontent.com/83867734/160303319-af26ce2d-2e57-44a2-a94f-5e59d71fd527.png)
 
