@@ -1,4 +1,10 @@
 "use strict";
+
+/*Detection Firefox of Chromium-based browser*/
+if (typeof browser === "undefined") {
+  var browser = chrome;
+}
+
 /*
 Called when the item has been created, or when creation failed due to an error.
 We'll just log success/failure here.
@@ -86,6 +92,35 @@ browser.contextMenus.create({
   });
 }*/
 
+/*
+Use this function for copying to clipboard because navigation.clipboard.writeText() not working properly with chromium-based browsers.
+
+*/
+function copyToClipboard(text) {
+  if (window.clipboardData && window.clipboardData.setData) {
+      // Internet Explorer-specific code path to prevent textarea being shown while dialog is visible.
+      return window.clipboardData.setData("Text", text);
+
+  }
+  else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+      var textarea = document.createElement("textarea");
+      textarea.textContent = text;
+      textarea.style.position = "fixed";  // Prevent scrolling to bottom of page in Microsoft Edge.
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+          return document.execCommand("copy");  // Security exception may be thrown by some browsers.
+      }
+      catch (ex) {
+          console.warn("Copy to clipboard failed.", ex);
+          return prompt("Copy to clipboard: Ctrl+C, Enter", text);
+      }
+      finally {
+          document.body.removeChild(textarea);
+      }
+  }
+}
+
 const tabData = {};
 const getProp = (obj, key) => (obj[key] || (obj[key] = {}));
 const encodeBody = body => {
@@ -126,28 +161,28 @@ browser.tabs.onReplaced.addListener((addId, delId) => delete tabData[delId]);
 browser.contextMenus.onClicked.addListener((info, tab) => {
   if (info.menuItemId === TOOLS.FFUF) {
     const data = tabData[tab.id]?.[info.frameId || 0] || {};
-    navigator.clipboard.writeText(`ffuf -u '${info.frameUrl || tab.url}'` +
+    copyToClipboard(`ffuf -u '${info.frameUrl || tab.url}'` +
       (data.headers?.map(h => ` -H '${h.name}: ${h.value}'`).join('') || '') +
       (data.body ? ' -d ' + encodeBody(data.body) : ''));
   }
 
   if (info.menuItemId === TOOLS.SQLMAP) {
     const data = tabData[tab.id]?.[info.frameId || 0] || {};
-    navigator.clipboard.writeText(`sqlmap -u '${info.frameUrl || tab.url}'` +
+    copyToClipboard(`sqlmap -u '${info.frameUrl || tab.url}'` +
       (data.headers?.map(h => ` -H '${h.name}: ${h.value}'`).join('') || '') +
       (data.body ? ' --data ' + encodeBody(data.body) : ''));
   }
 
   if (info.menuItemId === TOOLS.TIMEVERTER) {
     const data = tabData[tab.id]?.[info.frameId || 0] || {};
-    navigator.clipboard.writeText(`python timeverter.py -u '${info.frameUrl || tab.url}'` +
+    copyToClipboard(`python timeverter.py -u '${info.frameUrl || tab.url}'` +
       (data.headers?.map(h => ` -H '${h.name}: ${h.value}'`).join('') || '') +
       (data.body ? ' -d ' + encodeBody(data.body) : ''));
   }
 
   if (info.menuItemId === TOOLS.WFUZZ) {
     const data = tabData[tab.id]?.[info.frameId || 0] || {};
-    navigator.clipboard.writeText(`wfuzz -u '${info.frameUrl || tab.url}'` +
+    copyToClipboard(`wfuzz -u '${info.frameUrl || tab.url}'` +
       (data.headers?.map(h => ` -H '${h.name}: ${h.value}'`).join('') || '') +
       (data.body ? ' -d ' + encodeBody(data.body) : ''));
   }
