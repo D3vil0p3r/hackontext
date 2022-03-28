@@ -10,7 +10,7 @@ Current tools implemented:
 * FFUF
 * SQLMap
 * TimeVerter
-* WFUZZ
+* Wfuzz
 
 Note that these buttons only work on normal web pages, not special pages like `about:debugging`.
 
