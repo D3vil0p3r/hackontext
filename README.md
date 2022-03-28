@@ -24,6 +24,8 @@ HacKontext for Microsoft Edge: [publishing]
 
 HacKontext for Google Chrome: [publishing]
 
+Please, rate my work on the Extension Web Store.
+
 ## Contribution
 
 If you would like to add a new command-line tool for this purpose, please propose your ideas!
