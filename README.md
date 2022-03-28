@@ -2,7 +2,7 @@
 
 ![image](https://user-images.githubusercontent.com/83867734/160303319-af26ce2d-2e57-44a2-a94f-5e59d71fd527.png)
 
-HacKontext allows to inject HTTP header and body of the active browser tab on specific InfoSec command-line tools in order to improve and speed up their correct usage.
+HacKontext allows to inject HTTP headers and body parameters of the active browser tab on specific InfoSec command-line tools in order to improve and speed up their correct usage.
 
 It prevents the user to copy and paste headers and any parameters manually to the tools.
 
