@@ -4,7 +4,7 @@
 
 HacKontext allows to inject HTTP headers and body parameters of the active browser tab on specific InfoSec command-line tools in order to improve and speed up their correct usage.
 
-It prevents the user to copy and paste headers and any parameters manually to the tools.
+It helps the user to copy and paste headers and any parameters automatically to the tools.
 
 Current tools implemented:
 * FFUF
