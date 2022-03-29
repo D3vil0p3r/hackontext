@@ -3,7 +3,7 @@
   "manifest_version": 2,
   "name": "HacKontext",
   "description": "Allows to inject HTTP header and body of the active browser tab on InfoSec command-line tools to improve and speed up their usage.",
-  "version": "1.0",
+  "version": "1.2",
   "homepage_url": "https://github.com/D3vil0per/hackontext",
   "default_locale": "en",
 
