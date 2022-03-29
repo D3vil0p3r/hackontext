@@ -43,33 +43,50 @@ browser.contextMenus.create({
   contexts: ["all"],
 }, onCreated);
 
-browser.contextMenus.create({
-  id: "tools-copy-ffuf",
-  parentId: "tools-copy",
-  title: browser.i18n.getMessage("menuItemToolsCopyAsFFUF"),
-  contexts: ["all"],
-}, onCreated);
+let id_menu =["tools-OSINT","tools-OSINT-crt","tools-OSINT-dig-any","tools-OSINT-openssl-cert","tools-OSINT-curl-sonar-all","tools-OSINT-curl-sonar-subdomain","tools-OSINT-curl-sonar-tlds","tools-OSINT-sublist3r","tools-OSINT-theHarvester","tools-OSINT-waybackurls","tools-OSINT-WHOIS","tools-Recon","tools-cURLheader","tools-copy-ffuf","tools-copy-nmap","tools-copy-sqlmap","tools-copy-wafw00f","tools-copy-wfuzz","tools-copy-whatweb","tools-copy-xsstrike","tools-bruteforcing","tools-copy-cewl","tools-copy-hydra","tools-copy-timeverter"]
+let parent_id_menu =["tools-copy","tools-OSINT","tools-OSINT","tools-OSINT","tools-OSINT","tools-OSINT","tools-OSINT","tools-OSINT","tools-OSINT","tools-OSINT","tools-OSINT","tools-copy","tools-Recon","tools-Recon","tools-Recon","tools-Recon","tools-Recon","tools-Recon","tools-Recon","tools-Recon","tools-copy","tools-bruteforcing","tools-bruteforcing","tools-bruteforcing"]
+let title_menu=["menuItemOSINTCopy","menuItemOSINTcrt","menuItemOSINTDiG","menuItemOSINTOpenSSL","menuItemOSINTSonarAllCopy","menuItemOSINTSonarSubdomainCopy","menuItemOSINTSonarTLDsCopy","menuItemOSINTsublist3r","menuItemOSINTtheHarvester","menuItemOSINTwaybackurls","menuItemOSINTWHOIS","menuItemRecon","menuItemcURLheader","menuItemFFUF","menuItemNmap","menuItemSQLMap","menuItemWafW00f","menuItemWfuzz","menuItemWhatWeb","menuItemXSStrike","menuItemBruteforcing","menuItemCEWL","menuItemHydra","menuItemTimeVerter"]
 
-browser.contextMenus.create({
-  id: "tools-copy-sqlmap",
-  parentId: "tools-copy",
-  title: browser.i18n.getMessage("menuItemToolsCopyAsSQLMAP"),
-  contexts: ["all"],
-}, onCreated);
+for (let i = 0; i < id_menu.length; i++) {
+  browser.contextMenus.create({
+    id: id_menu[i],
+    parentId: parent_id_menu[i],
+    title: browser.i18n.getMessage(title_menu[i]),
+    contexts: ["all"],
+  }, onCreated);
+}
 
-browser.contextMenus.create({
-  id: "tools-copy-timeverter",
-  parentId: "tools-copy",
-  title: browser.i18n.getMessage("menuItemToolsCopyAsTIMEVERTER"),
-  contexts: ["all"],
-}, onCreated);
+const FILTER = {
+  types: ['main_frame', 'sub_frame'],
+  urls: ['<all_urls>'],
+};
 
-browser.contextMenus.create({
-  id: "tools-copy-wfuzz",
-  parentId: "tools-copy",
-  title: browser.i18n.getMessage("menuItemToolsCopyAsWFUZZ"),
-  contexts: ["all"],
-}, onCreated);
+const TOOLS = {
+  OSINT: id_menu[0],
+  CRT: id_menu[1],
+  DIG_ANY: id_menu[2],
+  OPENSSL_CERT: id_menu[3],
+  SONAR_SUBDOM: id_menu[4],
+  SONAR_TLD: id_menu[5],
+  SONAR_ALL: id_menu[6],
+  SUBLIST3R: id_menu[7],
+  THEHARVESTER: id_menu[8],
+  WAYBACKURLS: id_menu[9],
+  WHOIS: id_menu[10],
+  RECON: id_menu[11],
+  CURLHEADER: id_menu[12],
+  FFUF: id_menu[13],
+  NMAP: id_menu[14],
+  SQLMAP: id_menu[15],
+  WAFW00F: id_menu[16],
+  WFUZZ: id_menu[17],
+  WHATWEB: id_menu[18],
+  XSSTRIKE: id_menu[19],
+  BRUTEFORCING: id_menu[20],
+  CEWL: id_menu[21],
+  HYDRA: id_menu[22],
+  TIMEVERTER: id_menu[23],
+};
 
 /*function showCookiesForTab(tabs) {
   //get the first tab object in the array
@@ -134,18 +151,6 @@ const encodeBody = body => {
   return body_data;
 }
 
-const FILTER = {
-  types: ['main_frame', 'sub_frame'],
-  urls: ['<all_urls>'],
-};
-
-const TOOLS = {
-  FFUF: 'tools-copy-ffuf',
-  SQLMAP: 'tools-copy-sqlmap',
-  TIMEVERTER: 'tools-copy-timeverter',
-  WFUZZ: 'tools-copy-wfuzz',
-};
-
 browser.webRequest.onBeforeRequest.addListener(e => {
   getProp(getProp(tabData, e.tabId), e.frameId).body = e.requestBody;
 }, FILTER, ['requestBody']);
@@ -159,30 +164,106 @@ browser.tabs.onRemoved.addListener(tabId => delete tabData[tabId]);
 browser.tabs.onReplaced.addListener((addId, delId) => delete tabData[delId]);
 
 browser.contextMenus.onClicked.addListener((info, tab) => {
+  const url = `${info.frameUrl || tab.url}`;
+
+  let domain = (new URL(url));
+  const base_url = domain.hostname;
+  const path_url = domain.pathname;
+  const protocol_url = domain.protocol.replace(':','');
+  let fqdn = base_url.replace('www.','');
+  const data = tabData[tab.id]?.[info.frameId || 0] || {};
+
+  /*OSINT Tools */
+  if (info.menuItemId === TOOLS.CRT) {
+    copyToClipboard(`curl -s "https://crt.sh/?q=${fqdn}&output=json" | jq -r '.[] | "\\(.name_value)\\n\\(.common_name)"' | sort -u`);
+  }
+
+  if (info.menuItemId === TOOLS.DIG_ANY) {
+    copyToClipboard(`dig any ${fqdn} @8.8.8.8`);
+  }
+
+  if (info.menuItemId === TOOLS.OPENSSL_CERT) {
+    copyToClipboard(`openssl s_client -ign_eof 2>/dev/null <<<$'HEAD / HTTP/1.0\\r\\n\\r' -connect "${fqdn}:443" | openssl x509 -noout -text -in - | grep 'DNS' | sed -e 's|DNS:|\\n|g' -e 's|^\\*.*||g' | tr -d ',' | sort -u`);
+  }
+
+  if (info.menuItemId === TOOLS.SONAR_ALL) {
+    copyToClipboard(`curl -s https://sonar.omnisint.io/all/${fqdn}` + ` | jq -r '.[]' | sort -u`);
+  }
+
+  if (info.menuItemId === TOOLS.SONAR_SUBDOM) {
+    copyToClipboard(`curl -s https://sonar.omnisint.io/subdomains/${fqdn}` + ` | jq -r '.[]' | sort -u`);
+  }
+
+  if (info.menuItemId === TOOLS.SONAR_TLD) {
+    copyToClipboard(`curl -s https://sonar.omnisint.io/tlds/${fqdn}` + ` | jq -r '.[]' | sort -u`);
+  }
+
+  if (info.menuItemId === TOOLS.SUBLIST3R) {
+    copyToClipboard(`python sublist3r.py -d ${fqdn}`);
+  }
+
+  if (info.menuItemId === TOOLS.THEHARVESTER) {
+    copyToClipboard(`theHarvester -d "${fqdn}" -b all`);
+  }
+
+  if (info.menuItemId === TOOLS.WAYBACKURLS) {
+    copyToClipboard(`waybackurls -dates ${fqdn}`);
+  }
+
+  if (info.menuItemId === TOOLS.WHOIS) {
+    copyToClipboard(`whois ${fqdn}`);
+  }
+
+  if (info.menuItemId === TOOLS.CURLHEADER) {
+    copyToClipboard(`curl -I ${url}`);
+  }
+
   if (info.menuItemId === TOOLS.FFUF) {
-    const data = tabData[tab.id]?.[info.frameId || 0] || {};
-    copyToClipboard(`ffuf -u '${info.frameUrl || tab.url}'` +
+    copyToClipboard(`ffuf -u ${url}` +
       (data.headers?.map(h => ` -H '${h.name}: ${h.value}'`).join('') || '') +
       (data.body ? ' -d ' + encodeBody(data.body) : ''));
   }
 
+  if (info.menuItemId === TOOLS.NMAP) {
+    copyToClipboard(`nmap ${base_url}`);
+  }
+
   if (info.menuItemId === TOOLS.SQLMAP) {
-    const data = tabData[tab.id]?.[info.frameId || 0] || {};
-    copyToClipboard(`sqlmap -u '${info.frameUrl || tab.url}'` +
+    copyToClipboard(`sqlmap -u ${url}` +
       (data.headers?.map(h => ` -H '${h.name}: ${h.value}'`).join('') || '') +
       (data.body ? ' --data ' + encodeBody(data.body) : ''));
   }
 
-  if (info.menuItemId === TOOLS.TIMEVERTER) {
-    const data = tabData[tab.id]?.[info.frameId || 0] || {};
-    copyToClipboard(`python timeverter.py -u '${info.frameUrl || tab.url}'` +
+  if (info.menuItemId === TOOLS.WAFW00F) {
+    copyToClipboard(`wafw00f -v ${url}`);
+  }
+
+  if (info.menuItemId === TOOLS.WFUZZ) {
+    copyToClipboard(`wfuzz -u ${url}` +
       (data.headers?.map(h => ` -H '${h.name}: ${h.value}'`).join('') || '') +
       (data.body ? ' -d ' + encodeBody(data.body) : ''));
   }
 
-  if (info.menuItemId === TOOLS.WFUZZ) {
-    const data = tabData[tab.id]?.[info.frameId || 0] || {};
-    copyToClipboard(`wfuzz -u '${info.frameUrl || tab.url}'` +
+  if (info.menuItemId === TOOLS.WHATWEB) {
+    copyToClipboard(`whatweb ${url} -v`);
+  }
+
+  if (info.menuItemId === TOOLS.XSSTRIKE) {
+    copyToClipboard(`python xsstrike.py -u ${url}` + (data.headers? ` --headers "` : '') +
+    (data.headers?.map(h => `${h.name}: ${h.value}\n`).join('').replace(/\n$/,'') || '') + (data.headers?`"` : '') +
+    (data.body ? ' --data ' + encodeBody(data.body) : ''));
+  }
+
+  if (info.menuItemId === TOOLS.CEWL) {
+    copyToClipboard(`cewl ${url} -a -e --with-numbers`);
+  }
+
+  if (info.menuItemId === TOOLS.HYDRA) {
+    copyToClipboard(`hydra ${base_url} ${protocol_url}-[complete-here] ${path_url}`);
+  }
+
+  if (info.menuItemId === TOOLS.TIMEVERTER) {
+    copyToClipboard(`python timeverter.py -u ${url}` +
       (data.headers?.map(h => ` -H '${h.name}: ${h.value}'`).join('') || '') +
       (data.body ? ' -d ' + encodeBody(data.body) : ''));
   }

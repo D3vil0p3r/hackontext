@@ -15,24 +15,124 @@
     "description": "Title of tools copy item."
   },
 
-  "menuItemToolsCopyAsFFUF": {
+  "menuItemOSINTCopy": {
+    "message": "OSINT",
+    "description": "Title of OSINT menu item."
+  },
+
+  "menuItemOSINTcrt": {
+    "message": "Copy as crt.sh",
+    "description": "Title of crt.sh copy item."
+  },
+
+  "menuItemOSINTDiG": {
+    "message": "Copy as DNS any records",
+    "description": "Title of DiG copy item."
+  },
+
+  "menuItemOSINTOpenSSL": {
+    "message": "Copy as OpenSSL",
+    "description": "Title of OpenSSL copy item."
+  },
+
+  "menuItemOSINTSonarAllCopy": {
+    "message": "Copy as Sonar All",
+    "description": "Title of cURL Sonar All copy item."
+  },
+
+  "menuItemOSINTSonarSubdomainCopy": {
+    "message": "Copy as Sonar Subdomains",
+    "description": "Title of cURL Sonar Subdomain copy item."
+  },
+
+  "menuItemOSINTSonarTLDsCopy": {
+    "message": "Copy as Sonar TLDs",
+    "description": "Title of cURL Sonar TLDs copy item."
+  },
+
+  "menuItemOSINTsublist3r": {
+    "message": "Copy as Sublist3r",
+    "description": "Title of Sublist3r copy item."
+  },
+
+  "menuItemOSINTtheHarvester": {
+    "message": "Copy as theHarvester",
+    "description": "Title of theHarvester copy item."
+  },
+
+  "menuItemOSINTwaybackurls": {
+    "message": "Copy as waybackurls",
+    "description": "Title of waybackurls copy item."
+  },
+
+  "menuItemOSINTWHOIS": {
+    "message": "Copy as WHOIS",
+    "description": "Title of WHOIS copy item."
+  },
+
+  "menuItemRecon": {
+    "message": "Recon",
+    "description": "Title of Recon item."
+  },
+
+  "menuItemcURLheader": {
+    "message": "Copy as cURL Header",
+    "description": "Title of cURL Header item."
+  },
+
+  "menuItemFFUF": {
     "message": "Copy as FFUF",
-    "description": "Title of FFUF copy item."
+    "description": "Title of FFUF item."
   },
 
-  "menuItemToolsCopyAsSQLMAP": {
+  "menuItemNmap": {
+    "message": "Copy as Nmap",
+    "description": "Title of Nmap item."
+  },
+
+  "menuItemSQLMap": {
     "message": "Copy as SQLMap",
-    "description": "Title of SQLMap copy item."
+    "description": "Title of SQLMap item."
   },
 
-  "menuItemToolsCopyAsTIMEVERTER": {
+  "menuItemWafW00f": {
+    "message": "Copy as WafW00f",
+    "description": "Title of WafW00f item."
+  },
+
+  "menuItemWfuzz": {
+    "message": "Copy as Wfuzz",
+    "description": "Title of Wfuzz item."
+  },
+
+  "menuItemWhatWeb": {
+    "message": "Copy as WhatWeb",
+    "description": "Title of WhatWeb item."
+  },
+
+  "menuItemXSStrike": {
+    "message": "Copy as XSStrike",
+    "description": "Title of XSStrike item."
+  },
+
+  "menuItemBruteforcing": {
+    "message": "Bruteforcing",
+    "description": "Title of Bruteforcing item."
+  },
+
+  "menuItemCEWL": {
+    "message": "Copy as CEWL",
+    "description": "Title of CEWL item."
+  },
+
+  "menuItemHydra": {
+    "message": "Copy as Hydra",
+    "description": "Title of Hydra item."
+  },
+
+  "menuItemTimeVerter": {
     "message": "Copy as TimeVerter",
-    "description": "Title of TimeVerter copy item."
-  },
-
-  "menuItemToolsCopyAsWFUZZ": {
-    "message": "Copy as WFUZZ",
-    "description": "Title of WFUZZ copy item."
+    "description": "Title of TimeVerter item."
   }
 
 }
