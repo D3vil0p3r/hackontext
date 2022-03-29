@@ -20,7 +20,7 @@ Compatible with Mozilla Firefox, Google Chrome, Microsoft Edge, and Opera browse
 
 HacKontext for Mozilla Firefox: https://addons.mozilla.org/it/firefox/addon/hackontext/
 
-HacKontext for Microsoft Edge: [publishing]
+HacKontext for Microsoft Edge: https://microsoftedge.microsoft.com/addons/detail/hackontext/cjhiiflgkijbafcjdppinomiljblhcfb
 
 HacKontext for Google Chrome: [publishing]
 
