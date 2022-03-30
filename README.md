@@ -36,11 +36,13 @@ Compatible with Mozilla Firefox, Google Chrome, Microsoft Edge, and Opera browse
 
 ## Installation
 
-HacKontext for Mozilla Firefox: https://addons.mozilla.org/it/firefox/addon/hackontext/
+For Mozilla Firefox: https://addons.mozilla.org/it/firefox/addon/hackontext/
 
-HacKontext for Microsoft Edge: https://microsoftedge.microsoft.com/addons/detail/hackontext/cjhiiflgkijbafcjdppinomiljblhcfb
+For Microsoft Edge: https://microsoftedge.microsoft.com/addons/detail/hackontext/cjhiiflgkijbafcjdppinomiljblhcfb
 
-HacKontext for Google Chrome: [publishing]
+For Google Chrome: [Work in Progress (Migration to Manifest v3)]
+
+For Opera: [Publishing]
 
 Please, rate my work on the Extension Web Store.
 
