@@ -40,9 +40,9 @@ For Mozilla Firefox: https://addons.mozilla.org/it/firefox/addon/hackontext/
 
 For Microsoft Edge: https://microsoftedge.microsoft.com/addons/detail/hackontext/cjhiiflgkijbafcjdppinomiljblhcfb
 
-For Google Chrome: [Work in Progress (Migration to Manifest v3)]
+For Google Chrome: [Review phase]
 
-For Opera: [Publishing]
+For Opera: [Review phase]
 
 Please, rate my work on the Extension Web Store.
 
