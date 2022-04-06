@@ -40,7 +40,7 @@ For Mozilla Firefox: https://addons.mozilla.org/it/firefox/addon/hackontext/
 
 For Microsoft Edge: https://microsoftedge.microsoft.com/addons/detail/hackontext/cjhiiflgkijbafcjdppinomiljblhcfb
 
-For Google Chrome: [Review phase]
+For Google Chrome: https://chrome.google.com/webstore/detail/hackontext/emkdmncnikokjokffjhnoheobomcmifo
 
 For Opera: [Review phase]
 
