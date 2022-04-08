@@ -28,7 +28,7 @@ Current tools and services implemented:
 * Bruteforcing
   * CEWL
   * Hydra
-  * Wfuzz
+  * TimeVerter
 
 Note that these buttons only work on normal web pages, not special pages like `about:debugging`.
 
