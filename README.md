@@ -42,7 +42,7 @@ For Microsoft Edge: https://microsoftedge.microsoft.com/addons/detail/hackontext
 
 For Google Chrome: https://chrome.google.com/webstore/detail/hackontext/emkdmncnikokjokffjhnoheobomcmifo
 
-For Opera: [Review phase]
+For Opera: https://addons.opera.com/it/extensions/details/hackontext
 
 Please, rate my work on the Extension Web Store.
 
