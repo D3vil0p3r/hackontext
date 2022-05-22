@@ -24,6 +24,7 @@ Current tools and services implemented:
   * WafW00f
   * Wfuzz
   * WhatWeb
+  * WPScan
   * XSStrike
 * Bruteforcing
   * CEWL
