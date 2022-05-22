@@ -43,9 +43,9 @@ browser.contextMenus.create({
   contexts: ["all"],
 }, onCreated);
 
-let id_menu =["tools-OSINT","tools-OSINT-crt","tools-OSINT-dig-any","tools-OSINT-openssl-cert","tools-OSINT-curl-sonar-all","tools-OSINT-curl-sonar-subdomain","tools-OSINT-curl-sonar-tlds","tools-OSINT-sublist3r","tools-OSINT-theHarvester","tools-OSINT-waybackurls","tools-OSINT-WHOIS","tools-Recon","tools-cURLheader","tools-copy-ffuf","tools-copy-nmap","tools-copy-sqlmap","tools-copy-wafw00f","tools-copy-wfuzz","tools-copy-whatweb","tools-copy-xsstrike","tools-bruteforcing","tools-copy-cewl","tools-copy-hydra","tools-copy-timeverter"]
-let parent_id_menu =["tools-copy","tools-OSINT","tools-OSINT","tools-OSINT","tools-OSINT","tools-OSINT","tools-OSINT","tools-OSINT","tools-OSINT","tools-OSINT","tools-OSINT","tools-copy","tools-Recon","tools-Recon","tools-Recon","tools-Recon","tools-Recon","tools-Recon","tools-Recon","tools-Recon","tools-copy","tools-bruteforcing","tools-bruteforcing","tools-bruteforcing"]
-let title_menu=["menuItemOSINTCopy","menuItemOSINTcrt","menuItemOSINTDiG","menuItemOSINTOpenSSL","menuItemOSINTSonarAllCopy","menuItemOSINTSonarSubdomainCopy","menuItemOSINTSonarTLDsCopy","menuItemOSINTsublist3r","menuItemOSINTtheHarvester","menuItemOSINTwaybackurls","menuItemOSINTWHOIS","menuItemRecon","menuItemcURLheader","menuItemFFUF","menuItemNmap","menuItemSQLMap","menuItemWafW00f","menuItemWfuzz","menuItemWhatWeb","menuItemXSStrike","menuItemBruteforcing","menuItemCEWL","menuItemHydra","menuItemTimeVerter"]
+let id_menu =["tools-OSINT","tools-OSINT-crt","tools-OSINT-dig-any","tools-OSINT-openssl-cert","tools-OSINT-curl-sonar-all","tools-OSINT-curl-sonar-subdomain","tools-OSINT-curl-sonar-tlds","tools-OSINT-sublist3r","tools-OSINT-theHarvester","tools-OSINT-waybackurls","tools-OSINT-WHOIS","tools-Recon","tools-cURLheader","tools-copy-ffuf","tools-copy-nmap","tools-copy-sqlmap","tools-copy-wafw00f","tools-copy-wfuzz","tools-copy-whatweb","tools-copy-xsstrike","tools-copy-wpscan","tools-bruteforcing","tools-copy-cewl","tools-copy-hydra","tools-copy-timeverter"]
+let parent_id_menu =["tools-copy","tools-OSINT","tools-OSINT","tools-OSINT","tools-OSINT","tools-OSINT","tools-OSINT","tools-OSINT","tools-OSINT","tools-OSINT","tools-OSINT","tools-copy","tools-Recon","tools-Recon","tools-Recon","tools-Recon","tools-Recon","tools-Recon","tools-Recon","tools-Recon","tools-Recon","tools-copy","tools-bruteforcing","tools-bruteforcing","tools-bruteforcing"]
+let title_menu=["menuItemOSINTCopy","menuItemOSINTcrt","menuItemOSINTDiG","menuItemOSINTOpenSSL","menuItemOSINTSonarAllCopy","menuItemOSINTSonarSubdomainCopy","menuItemOSINTSonarTLDsCopy","menuItemOSINTsublist3r","menuItemOSINTtheHarvester","menuItemOSINTwaybackurls","menuItemOSINTWHOIS","menuItemRecon","menuItemcURLheader","menuItemFFUF","menuItemNmap","menuItemSQLMap","menuItemWafW00f","menuItemWfuzz","menuItemWhatWeb","menuItemXSStrike","menuItemWPScan","menuItemBruteforcing","menuItemCEWL","menuItemHydra","menuItemTimeVerter"]
 
 for (let i = 0; i < id_menu.length; i++) {
   browser.contextMenus.create({
@@ -66,9 +66,9 @@ const TOOLS = {
   CRT: id_menu[1],
   DIG_ANY: id_menu[2],
   OPENSSL_CERT: id_menu[3],
-  SONAR_SUBDOM: id_menu[4],
-  SONAR_TLD: id_menu[5],
-  SONAR_ALL: id_menu[6],
+  SONAR_ALL: id_menu[4],
+  SONAR_SUBDOM: id_menu[5],
+  SONAR_TLD: id_menu[6],
   SUBLIST3R: id_menu[7],
   THEHARVESTER: id_menu[8],
   WAYBACKURLS: id_menu[9],
@@ -82,10 +82,11 @@ const TOOLS = {
   WFUZZ: id_menu[17],
   WHATWEB: id_menu[18],
   XSSTRIKE: id_menu[19],
-  BRUTEFORCING: id_menu[20],
-  CEWL: id_menu[21],
-  HYDRA: id_menu[22],
-  TIMEVERTER: id_menu[23],
+  WPSCAN: id_menu[20],
+  BRUTEFORCING: id_menu[21],
+  CEWL: id_menu[22],
+  HYDRA: id_menu[23],
+  TIMEVERTER: id_menu[24],
 };
 
 /*function showCookiesForTab(tabs) {
@@ -252,6 +253,11 @@ browser.contextMenus.onClicked.addListener((info, tab) => {
     copyToClipboard(`python xsstrike.py -u ${url}` + (data.headers? ` --headers "` : '') +
     (data.headers?.map(h => `${h.name}: ${h.value}\n`).join('').replace(/\n$/,'') || '') + (data.headers?`"` : '') +
     (data.body ? ' --data ' + encodeBody(data.body) : ''));
+  }
+
+  if (info.menuItemId === TOOLS.WPSCAN) {
+    copyToClipboard(`wpscan --url ${url}` +
+      (data.headers?.map(h => ` --headers '${h.name}: ${h.value}'`).join('') || ''));
   }
 
   if (info.menuItemId === TOOLS.CEWL) {

@@ -115,6 +115,11 @@
     "description": "Title of XSStrike item."
   },
 
+  "menuItemWPScan": {
+    "message": "Copy as WPScan",
+    "description": "Title of WPScan item."
+  },
+
   "menuItemBruteforcing": {
     "message": "Bruteforcing",
     "description": "Title of Bruteforcing item."
