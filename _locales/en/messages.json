@@ -109,15 +109,15 @@
     "message": "Copy as WhatWeb",
     "description": "Title of WhatWeb item."
   },
+  
+  "menuItemWPScan": {
+    "message": "Copy as WPScan",
+    "description": "Title of WPScan item."
+  },
 
   "menuItemXSStrike": {
     "message": "Copy as XSStrike",
     "description": "Title of XSStrike item."
-  },
-
-  "menuItemWPScan": {
-    "message": "Copy as WPScan",
-    "description": "Title of WPScan item."
   },
 
   "menuItemBruteforcing": {
