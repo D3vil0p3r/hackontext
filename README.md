@@ -55,6 +55,20 @@ ffuf -u https://bbs/.archlinux.org/login.php?action=in -H ‘Host: bbs.archlinux
 ```
 and the user can edit this string for adding the preferred wordlist and fuzzing parameters for attacking the target.
 
+## Notes
+
+With Manifest V3 I'm having some issues.
+
+The current code works (after moving clipboard functions outside of the service worker (background.js)). The problem is that I noticed that whether I use navigator.clipboard or custom copyToClipboard functions, they both work — but if I go to google.com or another site, refresh the page (by going to the address bar and pressing ENTER), and then click "Copy as FFUF", then refresh again and click "Copy as FFUF" again, etc... for the first few times it copies everything. But at some point, it only copies the tool name and the URL, and no longer the headers and body parameters.
+
+If I’m not mistaken, even if I don’t refresh and just click "Copy as FFUF" many times, at the beginning it gives me the headers and parameters, but at some point it stops including them.
+
+To fix it, you just have to click the browser’s Refresh button with the mouse.
+
+This means it's not really a clipboard issue — which still works — but maybe a problem with SendHeaders and BeforeRequest, which in some cases may not be working.
+
+With Manifest V2, instead, I don’t have any problems.
+
 ## Contribution
 
 If you would like to add a new command-line tool for this purpose, please propose your ideas!
