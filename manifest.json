@@ -1,15 +1,13 @@
 {
   "manifest_version": 3,
-  "name": "HacKontext",
-  "description": "Allows to inject HTTP header and body of the active browser tab on InfoSec command-line tools to improve and speed up their usage.",
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
   "version": "1.3",
-  "homepage_url": "https://github.com/D3vil0per/hackontext",
   "default_locale": "en",
-
+  "homepage_url": "https://github.com/D3vil0per/hackontext",
   "background": {
     "service_worker": "background.js"
   },
-
   "permissions": [
     "contextMenus",
     "activeTab",
@@ -18,15 +16,14 @@
     "tabs",
     "clipboardWrite"
   ],
-
-  "host_permissions": ["<all_urls>"],
-
+  "host_permissions": [
+    "<all_urls>"
+  ],
   "icons": {
     "16": "icons/menu-16.png",
     "32": "icons/menu-32.png",
     "48": "icons/menu-48.png"
   },
-
   "browser_specific_settings": {
     "gecko": {
       "id": "hackontext@d3vil0p3r",
